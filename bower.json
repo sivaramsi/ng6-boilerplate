@@ -1,0 +1,21 @@
+{
+  "name": "aura",
+  "description": "multiple wordpress management",
+  "main": "index.js",
+  "authors": [
+    "sivaramsi"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "es6"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
