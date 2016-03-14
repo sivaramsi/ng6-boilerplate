@@ -1,7 +1,10 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+
 import 'bootstrap/dist/css/bootstrap.css';
 import uiBootstrap from 'angular-ui-bootstrap';
+import ngMessages from 'angular-messages';
+
 
 import Common from './common/common';
 import Components from './components/components';
@@ -11,6 +14,7 @@ import 'normalize.css';
 angular.module('app', [
         uiRouter,
         uiBootstrap,
+        ngMessages,
         Common.name,
         Components.name
     ])

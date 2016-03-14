@@ -1,6 +1,6 @@
 {
-  "name": "aura",
-  "description": "multiple wordpress management",
+  "name": "ng6-boilerplate",
+  "description": "ng6-boilerplate",
   "main": "index.js",
   "authors": [
     "sivaramsi"
@@ -17,5 +17,7 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+  }
 }
