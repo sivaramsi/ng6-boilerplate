@@ -1,4 +1,5 @@
 let APIInterceptor = function($rootScope, $injector, SERVERURL, $log) {
+    "ngInject";
     let service = this;
 
     service.request = function(config) {

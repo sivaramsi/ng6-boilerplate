@@ -37,28 +37,28 @@ angular.module('app', [
         "ngInject";
     })
     .constant('SERVERURL', selectedServerURL)
-    .run(initApp)
+    // .run(initApp)
     .component('app', AppComponent);
 
 
-function initApp($rootScope, Auth, $state) {
-    "ngInject";
-    $rootScope.$on('$stateChangeStart', function(event, toState) {
-        if (toState.name !== 'login' && toState.name !== 'register') {
-            if (!Auth.isAuthenticated(Auth)) {
-                event.preventDefault();
-                $state.go('login');
-            }
-        }
-        if (toState.name === 'login' || toState.name === 'register') {
-            if (Auth.isAuthenticated()) {
-                event.preventDefault();
-                $state.go('home');
-            }
-        }
-        if (toState.redirectTo) {
-            event.preventDefault();
-            $state.go(toState.redirectTo);
-        }
-    });
-}
+// function initApp($rootScope, Auth, $state) {
+//     "ngInject";
+//     $rootScope.$on('$stateChangeStart', function(event, toState) {
+//         if (toState.name !== 'login' && toState.name !== 'register') {
+//             if (!Auth.isAuthenticated(Auth)) {
+//                 event.preventDefault();
+//                 $state.go('login');
+//             }
+//         }
+//         if (toState.name === 'login' || toState.name === 'register') {
+//             if (Auth.isAuthenticated()) {
+//                 event.preventDefault();
+//                 $state.go('home');
+//             }
+//         }
+//         if (toState.redirectTo) {
+//             event.preventDefault();
+//             $state.go(toState.redirectTo);
+//         }
+//     });
+// }
