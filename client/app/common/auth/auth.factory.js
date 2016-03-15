@@ -34,7 +34,7 @@ let AuthFactory = function(SERVERURL, $http, $window, $state) {
         return JSON.parse($window.atob(base64));
     }
     let logout = () => {
-        this.removeToken();
+        removeToken();
         $state.go('login');
     }
     let isAuthed = () => {
@@ -47,7 +47,7 @@ let AuthFactory = function(SERVERURL, $http, $window, $state) {
         }
     }
 
-    return { login, signup,isAuthenticated, saveToken, getToken, removeToken, parseJwt, logout, isAuthed };
+    return { login, signup, isAuthenticated, saveToken, getToken, removeToken, parseJwt, logout, isAuthed };
 };
 
 AuthFactory.$inject = ['SERVERURL', '$http', '$window', '$state'];
