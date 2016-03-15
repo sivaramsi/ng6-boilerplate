@@ -8,8 +8,23 @@ import ngMessages from 'angular-messages';
 
 import Common from './common/common';
 import Components from './components/components';
-import AppComponent from './app.component';
 import 'normalize.css';
+import AppComponent from './app.component';
+
+let enviornment = {
+    'local': {
+        serverURL: 'http://192.168.1.46:9999/api/',
+        static_assets_url: 'http://192.168.1.46:9999/static/assets/'
+    },
+    'prod': {
+        serverURL: 'http://api.wp.report:9999',
+        static_assets_url: 'http://api.wp.report:9999/static/assets/'
+    }
+};
+
+let selectedEnv = enviornment['local'];
+let selectedServerURL = selectedEnv.serverURL;
+
 
 angular.module('app', [
         uiRouter,
@@ -20,9 +35,30 @@ angular.module('app', [
     ])
     .config(($locationProvider) => {
         "ngInject";
-        // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
-        // #how-to-configure-your-server-to-work-with-html5mode
-        //$locationProvider.html5Mode(true).hashPrefix('!');
     })
+    .constant('SERVERURL', selectedServerURL)
+    .run(initApp)
+    .component('app', AppComponent);
 
-.component('app', AppComponent);
+
+function initApp($rootScope, Auth, $state) {
+    "ngInject";
+    $rootScope.$on('$stateChangeStart', function(event, toState) {
+        if (toState.name !== 'login' && toState.name !== 'register') {
+            if (!Auth.isAuthenticated(Auth)) {
+                event.preventDefault();
+                $state.go('login');
+            }
+        }
+        if (toState.name === 'login' || toState.name === 'register') {
+            if (Auth.isAuthenticated()) {
+                event.preventDefault();
+                $state.go('home');
+            }
+        }
+        if (toState.redirectTo) {
+            event.preventDefault();
+            $state.go(toState.redirectTo);
+        }
+    });
+}
