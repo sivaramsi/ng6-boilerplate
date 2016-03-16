@@ -19,5 +19,6 @@
     "tests"
   ],
   "dependencies": {
+    "angular-ladda": "^0.3.4"
   }
 }

@@ -9,7 +9,9 @@ import ngMessages from 'angular-messages';
 import Common from './common/common';
 import Components from './components/components';
 import 'normalize.css';
+import './bower_components/ladda/dist/spin.min.js';
 import AppComponent from './app.component';
+
 
 let enviornment = {
     'local': {

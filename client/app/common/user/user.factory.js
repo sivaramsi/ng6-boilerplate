@@ -1,15 +1,9 @@
-let UserFactory = function () {
-  const user = {};
-
-  let getUser = () => {
-    return user;
-  };
-
-  let isSignedIn = () => {
-    return user.isSignedIn; 
-  };
-
-  return { getUser, isSignedIn };
+let UserFactory = function($http,SERVERURL) {
+    "ngInject";
+    let getProfile = () => {
+        return $http.get(SERVERURL + 'users/me');
+    }
+    return { getProfile };
 };
 
 export default UserFactory;

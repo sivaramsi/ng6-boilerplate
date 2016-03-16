@@ -7,7 +7,7 @@ let navbarComponent = {
   bindings: {},
   template,
   controller,
-  controllerAs: 'vm'
+  controllerAs: 'navbarCtrl'
 };
 
 export default navbarComponent;
