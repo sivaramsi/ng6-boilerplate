@@ -15,7 +15,7 @@ module.exports = {
         ]
     },
     resolve: {
-        root: [path.join(__dirname, "bower_components")]
+        root: [path.join(__dirname, "client/bower_components")]
     },
     plugins: [
         // Injects bundles in your index.html instead of wiring all manually.
@@ -37,6 +37,9 @@ module.exports = {
         }),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
+        ),
+        new webpack.ResolverPlugin(
+            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("package.json", ["main"])
         )
     ]
 };
