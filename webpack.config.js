@@ -14,6 +14,9 @@ module.exports = {
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
         ]
     },
+    resolve: {
+        root: [path.join(__dirname, "bower_components")]
+    },
     plugins: [
         // Injects bundles in your index.html instead of wiring all manually.
         // It also adds hash to all injected assets so we don't have problems
@@ -31,6 +34,9 @@ module.exports = {
             minChunks: function(module, count) {
                 return module.resource && module.resource.indexOf(path.resolve(__dirname, 'client')) === -1;
             }
-        })
+        }),
+        new webpack.ResolverPlugin(
+            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
+        )
     ]
 };
