@@ -6,13 +6,13 @@ import uiBootstrap from 'angular-ui-bootstrap';
 import ngMessages from 'angular-messages';
 
 
-import angularUiLayout from 'angular-ui-layout';
+
 
 
 import Common from './common/common';
 import Components from './components/components';
 import 'normalize.css';
-//import './bower_components/ladda/dist/spin.min.js';
+
 import AppComponent from './app.component';
 
 
@@ -67,3 +67,4 @@ function initApp($rootScope, Auth, $state) {
         }
     });
 }
+

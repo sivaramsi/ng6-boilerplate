@@ -1,16 +1,32 @@
-import NavbarModule from './navbar'
+import NavbarModule from './navbar';
+import AuthModule from '../auth/auth';
+import UserModule from '../user/user';
+
 import NavbarController from './navbar.controller';
 import NavbarComponent from './navbar.component';
 import NavbarTemplate from './navbar.html';
 
+
 describe('Navbar', () => {
-  let $rootScope, makeController;
+  let $rootScope, makeController,AuthService,UserService;
 
   beforeEach(window.module(NavbarModule.name));
-  beforeEach(inject((_$rootScope_) => {
+  beforeEach(window.module(UserModule.name));
+
+  beforeEach(window.module(AuthModule.name));
+  beforeEach(window.module(function ($provide) {
+    $provide.value('SERVERURL', {
+        SERVERURL: 'test'
+    });
+  }));
+
+
+  beforeEach(inject((_$rootScope_,Auth,User) => {
     $rootScope = _$rootScope_;
+    AuthService = Auth;
+    UserService = User;
     makeController = () => {
-      return new NavbarController();
+      return new NavbarController(AuthService,UserService);
     };
   }));
 
